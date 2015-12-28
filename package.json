@@ -1,0 +1,29 @@
+{
+  "name": "cps-ws",
+  "version": "0.0.1",
+  "description": "A workshop code for learning CPS.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "test": "node ./spec/spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SanCoder-Q/cps-ws"
+  },
+  "keywords": [
+    "Continuation",
+    "Passing",
+    "Style",
+    "Workshops"
+  ],
+  "author": "Jianming Qu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SanCoder-Q/cps-ws/issues"
+  },
+  "homepage": "https://github.com/SanCoder-Q/cps-ws",
+  "dependencies": {
+    "jasmine": "^2.4.1"
+  }
+}

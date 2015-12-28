@@ -1,0 +1,34 @@
+#+STARTUP: entitiespretty
+#+STARTUP: showall indent
+#+STARTUP: hidestars
+#+OPTIONS: \n:t
+
+* COMMENT requirement
+
+#+BEGIN_SRC emacs-lisp
+  (require 'yasnippet)
+  (require 'ob-scheme)
+  (require 'ob-js)
+  (require 'ob-scala)
+  (require 'ob-ruby)
+#+END_SRC
+
+#+RESULTS:
+: ob-ruby
+
+* Introduction
+A workshop for learning CPS.
+
+* How to run
+#+BEGIN_SRC shell
+  git clone git@github.com:SanCoder-Q/cps-ws.git
+  cd cps-ws
+  npm install
+  npm start
+#+END_SRC
+
+* How to test
+#+BEGIN_SRC scheme
+  npm test
+#+END_SRC
+
