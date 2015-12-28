@@ -16,10 +16,14 @@
 #+RESULTS:
 : ob-ruby
 
-* Introduction
-A workshop for learning CPS.
+* Introduction & Guide
 
-* How to run
+** About this repo
+
+This is a workshop for introduce the Continuation Passing Style (CPS) of functional programming.
+
+** How to run
+
 #+BEGIN_SRC shell
   git clone git@github.com:SanCoder-Q/cps-ws.git
   cd cps-ws
@@ -27,7 +31,10 @@ A workshop for learning CPS.
   npm start
 #+END_SRC
 
-* How to test
+** How to test
+
+Jasmine 2.3 is used in this repo for unit test.
+
 #+BEGIN_SRC scheme
   npm test
 #+END_SRC
