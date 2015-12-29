@@ -17,7 +17,7 @@ describe("A List", () => {
     });
 
     it("should be evaluated on each element by a function using forEach method", () => {
-        list.forEach( _ => _ + 1 );
-        expect(list).toEqual(new List(2, 3, 4, 5, 6));
+        var newList = list.forEach( _ => _ + 1 );
+        expect(newList).toEqual(new List(2, 3, 4, 5, 6));
     });
 });

@@ -48,3 +48,9 @@ A linked list is composed of two memory-adjacent elements: ~Head~ and ~Tail~. Th
 A simple ~List~ with a recurrent constructor has already defined in ~app.js~. Implement the ~List.prototype.forEach~ function to passing the test.
 
 *Notice* : Please do *NOT* use any loop syntaxes in your method implement e.g. ~for~ or ~while~ or any loop method in dear ~lodash~.
+
+* Change it to immutable function
+
+Now you should notice that the ~forEach~ method is a mutable function: It takes two arguments a ~List~ object and an operation function. Plus, it never return. So you cannot use it in a chain. That's not very good.
+
+Can you do something magic to make it immutable and return the operated new ~List~ object. Please pass all the tests without changing them. Still, do not use any loop syntaxes. They are just *syntax sugar*. And you need to see what behind them.

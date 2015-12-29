@@ -31,7 +31,7 @@ List.cons = function(head, tail) {
 };
 
 List.prototype.forEach = function(op) {
-    // TODO: Please DO NOT use any loop syntexes or loop method in lodash.
+    // TODO: Give a immutable implementation and return the new list. Please DO NOT use any loop syntexes or loop method in lodash.
 };
 
 module.exports = List;
