@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/SanCoder-Q/cps-ws",
   "dependencies": {
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^2.4.0",
+    "lodash": "^3.10.1"
   }
 }

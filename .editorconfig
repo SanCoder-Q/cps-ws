@@ -1,7 +1,16 @@
-# top-most EditorConfig file
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# editorconfig.org
+
 root = true
 
-# 4 space indentation
-[*.js, *.json]
+# Change these settings to your own preference
+[*]
 indent_style = space
 indent_size = 4
+
+# We recommend you to keep these unchanged
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true

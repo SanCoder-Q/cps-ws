@@ -39,3 +39,12 @@ Jasmine 2.3 is used in this repo for unit test.
   npm test
 #+END_SRC
 
+* Simple Linked List
+
+To introduce the CPS, it's better to introduce it with benefit. A important application scenario of CPS is to apply iteration elegantly. Hence, we are going to implement a linked list using *java script* (since everyone should be familiar with it).
+
+A linked list is composed of two memory-adjacent elements: ~Head~ and ~Tail~. The ~Head~ storage a piece of data and the ~Tail~ point to the next ~Head~ if it exist, otherwise it should be empty (~undefined~).
+
+A simple ~List~ with a recurrent constructor has already defined in ~app.js~. Implement the ~List.prototype.forEach~ function to passing the test.
+
+*Notice* : Please do *NOT* use any loop syntaxes in your method implement e.g. ~for~ or ~while~ or any loop method in dear ~lodash~.
