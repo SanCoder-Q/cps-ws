@@ -107,3 +107,53 @@ Tail call optimization is applying in a lot of compilers and interpreters in man
 Hence, an important feature of the optimization is to reduce the frequent stack using.
 
 We can change our ~forEach~ function to fit the huge data requirement in our ~List~. Using *tail recursion* to pass the same test. Good Luck!
+
+* CPS is coming
+
+So, you finished it, congratulations!
+
+But, you wrote two recursion, right? Think about what if our List is pretty huge? What if the List has higher dimension (, means the element of the list may also a list)?
+
+Is there a possible way to do the recursion just once?
+
+Of course there is a way: using CPS! It's easy to implement, easier than what it sounds and looks.
+
+** What's CPS?
+
+Continuation-passing style is a magical, but simple style of *functional programming* in which control is passed explicitly in the form of a continuation.
+CPS is different from direct style programming which we usually use. The function written in CPS takes an extra argument: an explicit *continuation function* usually with only one argument. When the CPS function got a result which returned by the direct style function, it *returns* the result by calling the continuation function with the value as the argument. This means when invoking a CPS function, it requires a *callback function* to deal with the returned value. For example:
+
+- JavaScript
+  + Direct style
+    #+BEGIN_SRC js
+      var square = _ => _ * _;
+      return square(2);
+    #+END_SRC
+
+    #+RESULTS:
+    : 4
+
+  + CPS
+    #+BEGIN_SRC js
+      var identity = _ => _;
+      var square = (_, f) => f(_ * _);
+      return square(2, identity);
+    #+END_SRC
+
+    #+RESULTS:
+    : 4
+
+Can you see it? You can just send the ~then function~ as a parameter of the current function, the ~then function~ will deal with the result, and in the end, give the new result to the next ~then function~ until we get what we want. Yes, when you do something like ~.then(...)~ or continus Ajax request, you are using CPS.
+
+The above logic is not pure CPS. It's just a description because we using the ~identity~ to get the final result but ~identity~ is not a CPS definition. Pure CPS is not recommended, especially in a non functional programming language. But sometimes, we can use it to achieve our purpose, and sometimes it help us to comprehend the compiler running principle and Monad.
+
+** Eventually why CPS?
+
+- To understand how compiler working while the function invoked.
+- Force the compiler or interpreter to run the code in order.
+- Give you a chain style to orgnize your logic.
+- Make every recursion to tail recursion.
+
+** Let's do it!
+
+Using CPS to make your ~forEach~ not only loop once but also a tail recursion.
