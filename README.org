@@ -45,7 +45,7 @@ To introduce the CPS, it's better to introduce it with benefit. A important appl
 
 A linked list is composed of two memory-adjacent elements: ~Head~ and ~Tail~. The ~Head~ storage a piece of data and the ~Tail~ point to the next ~Head~ if it exist, otherwise it should be empty (~undefined~).
 
-A simple ~List~ with a recurrent constructor has already defined in ~app.js~. Implement the ~List.prototype.forEach~ function to passing the test.
+A simple ~List~ with a recursive constructor has already defined in ~app.js~. Implement the ~List.prototype.forEach~ function to passing the test.
 
 *Notice* : Please do *NOT* use any loop syntaxes in your method implement e.g. ~for~ or ~while~ or any loop method in dear ~lodash~.
 
@@ -54,3 +54,56 @@ A simple ~List~ with a recurrent constructor has already defined in ~app.js~. Im
 Now you should notice that the ~forEach~ method is a mutable function: It takes two arguments a ~List~ object and an operation function. Plus, it never return. So you cannot use it in a chain. That's not very good.
 
 Can you do something magic to make it immutable and return the operated new ~List~ object. Please pass all the tests without changing them. Still, do not use any loop syntaxes. They are just *syntax sugar*. And you need to see what behind them.
+
+* Tail recursion
+
+Since the ES6 has already standardized the *tail call optimization* feature, there is a very strong possibility that V8 will have this feature.
+
+Tail call optimization is a compile technology. It can optimize the function call at the end of the parent function. For instance:
+
+#+BEGIN_SRC js
+  function Caller() {
+    var arg;
+    // do something with arg
+    return Callee(arg);
+  }
+#+END_SRC
+
+Tail call optimization is applying in a lot of compilers and interpreters in many different languages including C++, Java, C#, Scala, Lisp etc. *One key point is it can change the recursion to iteration.* For example:
+
+#+BEGIN_SRC js
+  // A recursive factorial function, but not tail recursion.
+  function factorial(n) {
+    return n ? n * factorial(n-1) : 1;
+  }
+  result = factorial(5);
+  //     = 5 * factorial(4)
+  //     = 5 * (4 * factorial(3))
+  //     = 5 * (4 * (3 * factorial(2)))
+  //     = 5 * (4 * (3 * (2 * factorial(1))))
+  //     = 5 * (4 * (3 * (2 * (1 * factorial(0)))))
+  //     = 5 * (4 * (3 * (2 * (1 * 1))))
+  //     = 5 * (4 * (3 * (2 * 1)))
+  //     = 5 * (4 * (3 * 2))
+  //     = 5 * (4 * 6)
+  //     = 5 * 24
+  //     = 120
+#+END_SRC
+
+#+BEGIN_SRC js
+  // A recursive factorial function, but not tail recursion.
+  function factorial(n, result) {
+    return n ? factorial(n-1, n * result) : result;
+  }
+  result = factorial(5, 1);
+  //     = factorial(4, 1 * 5)
+  //     = factorial(3, 5 * 4)
+  //     = factorial(2, 3 * 20)
+  //     = factorial(1, 2 * 60)
+  //     = factorial(0, 1 * 120)
+  //     = 120
+#+END_SRC
+
+Hence, an important feature of the optimization is to reduce the frequent stack using.
+
+We can change our ~forEach~ function to fit the huge data requirement in our ~List~. Using *tail recursion* to pass the same test. Good Luck!

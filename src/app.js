@@ -31,7 +31,7 @@ List.cons = function(head, tail) {
 };
 
 List.prototype.forEach = function(op) {
-    // TODO: Give a immutable implementation and return the new list. Please DO NOT use any loop syntexes or loop method in lodash.
+    // TODO: Give a immutable tail-recursive implementation and return the new list. Please DO NOT use any loop syntexes or loop method in lodash.
     function forEachIter(src) {
         if(src.tail) {
             return List.cons(op(src.head), forEachIter(src.tail));
