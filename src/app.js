@@ -45,4 +45,8 @@ List.prototype.forEach = function(op) {
     return forEachIter(this, _ => _);
 };
 
+List.prototype.foldRight = function(zero, op) {
+    return this;
+};
+
 module.exports = List;

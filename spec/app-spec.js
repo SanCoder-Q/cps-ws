@@ -20,4 +20,9 @@ describe("A List", () => {
         var newList = list.forEach( _ => _ + 1 );
         expect(newList).toEqual(new List(2, 3, 4, 5, 6));
     });
+
+    it("should fold to a string using foldRight method", () => {
+        var str = list.foldRight("6", (x, sum) => x.toString() + sum.toString());
+        expect(str).toBe("123456");
+    });
 });
