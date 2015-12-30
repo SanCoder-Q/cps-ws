@@ -32,14 +32,23 @@ List.cons = function(head, tail) {
 
 List.prototype.forEach = function(op) {
     // TODO: Give a immutable tail-recursive implementation and return the new list. Please DO NOT use any loop syntexes or loop method in lodash.
-    function forEachIter(src) {
+    function forEachIter(src, dst) {
         if(src.tail) {
-            return List.cons(op(src.head), forEachIter(src.tail));
+            return forEachIter(src.tail, List.cons(op(src.head), dst));
         } else {
-            return List.cons(op(src.head), undefined);
+            return List.cons(op(src.head), dst);
         }
     }
-    return forEachIter(this);
+
+    function reverse(src, dst) {
+        if(src.tail) {
+            return reverse(src.tail, List.cons(src.head, dst));
+        } else {
+            return List.cons(src.head, dst);
+        }
+    }
+
+    return reverse(forEachIter(this, undefined));
 };
 
 module.exports = List;
