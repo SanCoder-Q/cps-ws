@@ -157,3 +157,28 @@ The above logic is not pure CPS. It's just a description because we using the ~i
 ** Let's do it!
 
 Using CPS to make your ~forEach~ not only loop once but also a tail recursion.
+
+** Step by step:
+
+#+BEGIN_SRC js
+  List.prototype.forEach = function(op) {
+    function forEachIter(src, f) {
+      if(src.tail) {
+        return forEachIter(
+          src.tail,
+          (dst) => f(List.cons(op(src.head), dst))
+        );
+      } else {
+        return f(List.cons(op(src.head), undefined));
+      }
+    }
+    return forEachIter(this, _ => _);
+  };
+
+  // If this = (1, (2, (3, undefined)))
+  // forEachIter(this, _=>_)
+  // forEachIter((2, (3, undefined)), x => List.cons(op(1), x))
+  // forEachIter((3, undefined), x => List.cons(op(1), List.cons(op(2), x)))
+  // (x => List.cons(op(1), List.cons(op(2), x)))(List.cons(op(3), undefined))
+  // (op(1), (op(2), (op(3), undefined)))
+#+END_SRC
