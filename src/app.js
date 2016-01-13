@@ -58,4 +58,13 @@ List.prototype.foldRight = function(zero, op) {
     return foldRightCPS(this, id);
 };
 
+// Finish the follow two function using CPS and pass all the tests.
+List.prototype.foldLeft = function(zero, op) {
+    return this;
+};
+
+List.prototype.reverse = function() {
+    return this;
+};
+
 module.exports = List;

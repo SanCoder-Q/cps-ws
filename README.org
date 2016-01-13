@@ -184,4 +184,9 @@ Using CPS to make your ~forEach~ not only loop once but also a tail recursion.
 #+END_SRC
 
 ** More
+
 Implement ~List.prototype.foldRight~ methods using cps and pass the test.
+
+** What if the recursion is already tail recursive?
+
+Let's convert some functions which are already tail recursive to CPS.

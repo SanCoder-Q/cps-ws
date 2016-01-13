@@ -25,4 +25,14 @@ describe("A List", () => {
         var str = list.foldRight("6", (x, sum) => x.toString() + sum.toString());
         expect(str).toBe("123456");
     });
+
+    it("should fold to a string using foldLeft method", () => {
+        var str = list.foldLeft("0", (sum, x) => sum.toString() + x.toString());
+        expect(str).toBe("012345");
+    });
+
+    it("should reverse the list using reverse  method", () => {
+        expect(list.reverse(list)).toEqual(new List(5, 4, 3, 2, 1));
+    });
+
 });
