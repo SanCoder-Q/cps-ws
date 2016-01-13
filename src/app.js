@@ -46,7 +46,16 @@ List.prototype.forEach = function(op) {
 };
 
 List.prototype.foldRight = function(zero, op) {
-    return this;
+    var id = _ => _;
+
+    function foldRightCPS(src, f) {
+        if(src.tail) {
+            return foldRightCPS(src.tail, _ => f(op(src.head, _)));
+        } else {
+            return f(op(src.head, zero));
+        }
+    }
+    return foldRightCPS(this, id);
 };
 
 module.exports = List;
